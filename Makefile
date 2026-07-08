@@ -24,7 +24,7 @@ test:
 	test ! -e src/vendor
 	test ! -e $(EXTENSION)/vendor
 	/usr/bin/perl t/pangu-space.t
-	PANGU_SPACE_SCRIPT="$(EXTENSION)/pangu-space.pl" /usr/bin/perl t/pangu-space.t
+	PANGU_SPACE_SCRIPT="$(EXTENSION)/pangu-space.pl" PANGU_SPACE_CONFIG="$(EXTENSION)/Config.plist" /usr/bin/perl t/pangu-space.t
 
 package: build
 	cd $(DIST_DIR) && zip -X -r ../$(ZIP) $(EXTENSION)

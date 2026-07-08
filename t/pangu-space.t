@@ -10,6 +10,17 @@ binmode STDOUT, ':encoding(UTF-8)';
 binmode STDERR, ':encoding(UTF-8)';
 
 my $script = $ENV{PANGU_SPACE_SCRIPT} || "$FindBin::Bin/../src/pangu-space.pl";
+my $config = $ENV{PANGU_SPACE_CONFIG} || "$FindBin::Bin/../src/Config.plist";
+
+{
+	open my $fh, '<:encoding(UTF-8)', $config or die "Cannot read $config: $!";
+	my $plist = do { local $/; <$fh> };
+	like(
+		$plist,
+		qr{<key>Shell Script</key>\s*<string>#!/bin/sh\s+exec /usr/bin/perl pangu-space\.pl</string>},
+		'inline shell script declares /bin/sh interpreter',
+	);
+}
 
 sub url_encode {
 	my ($text) = @_;

@@ -13,8 +13,9 @@
 			<array>
 				<string>copy</string>
 			</array>
-            <key>Shell Script</key>
-            <string>exec /usr/bin/perl pangu-space.pl</string>
+			<key>Shell Script</key>
+			<string>#!/bin/sh
+exec /usr/bin/perl pangu-space.pl</string>
 			<key>Long Running</key>
 			<false/>
 			<key>Title</key>
