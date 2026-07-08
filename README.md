@@ -12,8 +12,7 @@
 ## 安装
 
 - 下载 `pangu-space.popclipext-x.x.x.zip` 文件，解压 `pangu-space.popclipext` 后双击安装。
-- 插件默认以脚本形式运行，不包含 PyInstaller 打包的二进制文件，因此新 Mac 上更不容易触发「可疑软件」提示。
-- 需要系统可用的 `python3`，不需要全局安装 `pangu` 包。插件已内置 [pangu.py](https://github.com/vinta/pangu.py) `4.0.6.1` 的纯 Python 源码，并保留 MIT license。
+- 插件以系统自带的 Perl 脚本运行，不包含 PyInstaller 打包的二进制文件，也不依赖 Python 或第三方包。
 
 ## 打包
 
@@ -23,17 +22,17 @@ make package VERSION=1.0.0
 
 打包结果会生成在项目根目录，例如 `pangu-space.popclipext-1.0.0.zip`。
 
-如果必须发布 PyInstaller 二进制版本，请签名后再分发：
+## 测试
 
 ```sh
-make build-binary SIGN_IDENTITY="Developer ID Application: Your Name (TEAMID)"
+make test
 ```
 
-没有 Developer ID 时，`SIGN_IDENTITY=-` 会做 ad-hoc 签名，只适合本机或小范围测试。
+测试会直接执行 PopClip 使用的 Perl 脚本，覆盖中英文/数字间距、标点转换、引号转换、括号、hash、运算符、URL decode、错误路径，并校验源码目录和可安装扩展目录中的脚本保持一致。
 
 ## 插件功能
 
-基于 [pangu.space](https://github.com/vinta/pangu.space) + python3 开发，支持：
+基于 [pangu.space](https://github.com/vinta/pangu.space) 的排版规则实现，支持：
 
 - 增加盘古之白
 - 所有中文引号改成直角引号
