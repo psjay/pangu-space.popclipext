@@ -12,13 +12,14 @@
 			<key>Requirements</key>
 			<array>
 				<string>copy</string>
+				<string>paste</string>
 			</array>
 			<key>Shell Script File</key>
 			<string>pangu-space.pl</string>
 			<key>Long Running</key>
 			<false/>
 			<key>Title</key>
-			<string>p</string>
+			<string>pangulize</string>
 		</dict>
 	</array>
 	<key>Extension Identifier</key>

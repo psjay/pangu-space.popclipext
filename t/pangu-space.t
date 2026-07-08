@@ -20,6 +20,16 @@ my $config = $ENV{PANGU_SPACE_CONFIG} || "$FindBin::Bin/../src/Config.plist";
 		qr{<key>Shell Script File</key>\s*<string>pangu-space\.pl</string>},
 		'config points to Perl shell script file',
 	);
+	like(
+		$plist,
+		qr{<key>Title</key>\s*<string>pangulize</string>},
+		'action title is pangulize',
+	);
+	like(
+		$plist,
+		qr{<key>Requirements</key>\s*<array>\s*<string>copy</string>\s*<string>paste</string>\s*</array>},
+		'action requires copy and paste so it only appears in editable contexts',
+	);
 }
 
 {
