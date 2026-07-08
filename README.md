@@ -11,8 +11,25 @@
 
 ## 安装
 
-- 下载 `pangu-space.popclipext-x.x.x.zip` 文件，解压 `pangu-space.popclipext` 双击安装。
-- 需要有 `Python3` 环境和 [pangu.py](https://github.com/vinta/pangu.py) 包， 一键安装 `pip install -U pangu` 。
+- 下载 `pangu-space.popclipext-x.x.x.zip` 文件，解压 `pangu-space.popclipext` 后双击安装。
+- 插件默认以脚本形式运行，不包含 PyInstaller 打包的二进制文件，因此新 Mac 上更不容易触发「可疑软件」提示。
+- 需要系统可用的 `python3`，不需要全局安装 `pangu` 包。插件已内置 [pangu.py](https://github.com/vinta/pangu.py) `4.0.6.1` 的纯 Python 源码，并保留 MIT license。
+
+## 打包
+
+```sh
+make package VERSION=1.0.0
+```
+
+打包结果会生成在项目根目录，例如 `pangu-space.popclipext-1.0.0.zip`。
+
+如果必须发布 PyInstaller 二进制版本，请签名后再分发：
+
+```sh
+make build-binary SIGN_IDENTITY="Developer ID Application: Your Name (TEAMID)"
+```
+
+没有 Developer ID 时，`SIGN_IDENTITY=-` 会做 ad-hoc 签名，只适合本机或小范围测试。
 
 ## 插件功能
 

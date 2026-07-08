@@ -1,3 +1,5 @@
 build/
-pangu-space.popclipext/
+dist/
+*.zip
+__pycache__/
 pangu-space.spec
