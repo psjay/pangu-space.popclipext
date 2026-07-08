@@ -17,8 +17,18 @@ my $config = $ENV{PANGU_SPACE_CONFIG} || "$FindBin::Bin/../src/Config.plist";
 	my $plist = do { local $/; <$fh> };
 	like(
 		$plist,
-		qr{<key>Shell Script</key>\s*<string>#!/bin/sh\s+exec /usr/bin/perl pangu-space\.pl</string>},
-		'inline shell script declares /bin/sh interpreter',
+		qr{<key>Shell Script File</key>\s*<string>pangu-space\.pl</string>},
+		'config points to Perl shell script file',
+	);
+}
+
+{
+	open my $fh, '<:encoding(UTF-8)', $script or die "Cannot read $script: $!";
+	my $first_line = <$fh>;
+	is(
+		$first_line,
+		"#!/usr/bin/perl\n",
+		'Perl script file declares its interpreter',
 	);
 }
 
