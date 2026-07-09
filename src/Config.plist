@@ -5,8 +5,8 @@
 	<key>Actions</key>
 	<array>
 		<dict>
-			<key>After</key>
-			<string>paste-result</string>
+			<key>Capture HTML</key>
+			<true/>
 			<key>Image File</key>
 			<string>space.png</string>
 			<key>Requirements</key>
@@ -14,8 +14,8 @@
 				<string>copy</string>
 				<string>paste</string>
 			</array>
-			<key>Shell Script File</key>
-			<string>pangu-space.pl</string>
+			<key>JavaScript File</key>
+			<string>pangu-space.js</string>
 			<key>Long Running</key>
 			<false/>
 			<key>Title</key>

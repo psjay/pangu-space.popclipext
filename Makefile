@@ -9,22 +9,17 @@ ZIP := pangu-space.popclipext-$(VERSION).zip
 build:
 	rm -rf $(EXTENSION_PATH)
 	mkdir -p $(EXTENSION_PATH)
-	cp src/Config.plist src/pangu-space.pl src/space.png $(EXTENSION_PATH)/
-	chmod +x $(EXTENSION_PATH)/pangu-space.pl
+	cp src/Config.plist src/pangu-space.js src/space.png $(EXTENSION_PATH)/
 	xattr -cr $(EXTENSION_PATH) || true
 
-test:
-	/usr/bin/perl -c src/pangu-space.pl
-	/usr/bin/perl -c $(EXTENSION)/pangu-space.pl
-	plutil -lint src/Config.plist $(EXTENSION)/Config.plist
-	cmp src/pangu-space.pl $(EXTENSION)/pangu-space.pl
-	cmp src/Config.plist $(EXTENSION)/Config.plist
-	test ! -e src/pangu-space.py
-	test ! -e $(EXTENSION)/pangu-space.py
-	test ! -e src/vendor
-	test ! -e $(EXTENSION)/vendor
-	/usr/bin/perl t/pangu-space.t
-	PANGU_SPACE_SCRIPT="$(EXTENSION)/pangu-space.pl" PANGU_SPACE_CONFIG="$(EXTENSION)/Config.plist" /usr/bin/perl t/pangu-space.t
+test: build
+	node --check src/pangu-space.js
+	node --check $(EXTENSION_PATH)/pangu-space.js
+	plutil -lint src/Config.plist $(EXTENSION_PATH)/Config.plist
+	cmp src/pangu-space.js $(EXTENSION_PATH)/pangu-space.js
+	cmp src/Config.plist $(EXTENSION_PATH)/Config.plist
+	node --test t/pangu-space.test.js
+	PANGU_SPACE_SCRIPT="$(abspath $(EXTENSION_PATH)/pangu-space.js)" PANGU_SPACE_CONFIG="$(abspath $(EXTENSION_PATH)/Config.plist)" node --test t/pangu-space.test.js
 
 package: build
 	cd $(DIST_DIR) && zip -X -r ../$(ZIP) $(EXTENSION)

@@ -12,7 +12,7 @@
 ## 安装
 
 - 下载 `pangu-space.popclipext-x.x.x.zip` 文件，解压 `pangu-space.popclipext` 后双击安装。
-- 插件以系统自带的 Perl 脚本运行，不包含 PyInstaller 打包的二进制文件，也不依赖 Python 或第三方包。
+- 插件以 PopClip 内置的 JavaScript 运行时执行，不依赖第三方包。
 
 ## 打包
 
@@ -28,7 +28,7 @@ make package VERSION=1.0.0
 make test
 ```
 
-测试会直接执行 PopClip 使用的 Perl 脚本，覆盖中英文/数字间距、标点转换、引号转换、括号、hash、运算符、URL decode、错误路径，并校验源码目录和可安装扩展目录中的脚本保持一致。
+测试会直接执行 PopClip 使用的 JavaScript，覆盖中英文/数字间距、标点转换、引号转换、括号、hash、运算符、HTML 保真、纯文本降级和大文本性能，并校验源码目录和构建目录中的脚本保持一致。
 
 ## 插件功能
 
@@ -36,6 +36,8 @@ make test
 
 - 增加盘古之白
 - 所有中文引号改成直角引号
+- 在支持富文本的应用中保留原有 HTML 格式、链接和样式
+- 自动跳过代码块，并在无法获取 HTML 时回退到纯文本
 
 ## 效果
 
