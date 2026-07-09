@@ -81,7 +81,12 @@ const cases = [
   [
     "matches pangu slash spacing behavior",
     "打开/Users/name/项目和A/中文",
-    "打开 / Users/name/ 项目和 A / 中文",
+    "打开 /Users/name/ 项目和 A / 中文",
+  ],
+  [
+    "keeps an absolute path intact after CJK",
+    "跳转到/User/home 目录下",
+    "跳转到 /User/home 目录下",
   ],
   [
     "adds spaces around brackets",

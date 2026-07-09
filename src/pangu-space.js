@@ -105,7 +105,7 @@ function pangulize(input) {
     "$1 $2 $3",
   );
 
-  text = text.replace(/([/]) ([a-z\-_.\/]+)/gu, "$1$2");
+  text = text.replace(/([/]) ([A-Za-z\-_.\/]+)/gu, "$1$2");
   text = text.replace(/([/.])([A-Za-z\-_.\/]+) ([\/])/gu, "$1$2$3");
 
   text = text.replace(
